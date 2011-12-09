@@ -7,9 +7,9 @@
 //
 
 #include "levmar.h"
-#include "pfitDataSet.h"
 
-// Note that we don't currently support multiple output dimensions!
+///We require ofxPolyFit here
+#include "pfitDataSet.h"
 
 namespace ofxLevMar {
 	///Extend this class with your own model
