@@ -46,7 +46,7 @@ namespace ofxLevMar {
 
 		for (int i=0; i<n; i++) {
 			point = set[i].makeCopy();
-			model.evaluate(set[i], parameters);
+			model.evaluate(point, parameters);
 
 			rms = 0;
 			for (int j=0; j<set.getOutputDimensions(); j++)
