@@ -16,7 +16,7 @@ namespace ofxLevMar {
 
 		FitData<double> fitData(set, model);
 		dlevmar_dif(evaluate, &parameters[0], outputBlank, parameters.size(),
-			set.size(), iterations, NULL, NULL, NULL, NULL, (void*)&set);
+			set.size(), iterations, NULL, NULL, NULL, NULL, (void*)&fitData);
 
 		delete[] outputBlank;
 	}
@@ -28,7 +28,7 @@ namespace ofxLevMar {
 
 		FitData<float> fitData(set, model);
 		slevmar_dif(evaluate, &parameters[0], outputBlank, parameters.size(),
-			set.size(), iterations, NULL, NULL, NULL, NULL, (void*)&set);
+			set.size(), iterations, NULL, NULL, NULL, NULL, (void*)&fitData);
 
 		delete[] outputBlank;
 	}
@@ -38,14 +38,13 @@ namespace ofxLevMar {
 		FitData<T>& data(*(FitData<T>*)adata);
 		const pfitDataSet<T>& set(data.set);
 		const Model<T>& model(data.model);
-		pfitDataPoint<T> point = *(pfitDataPoint<T>*)0;
 
 		vector<T> parameters(&p[0], &p[m]);
 
 		T rms, error;
 
 		for (int i=0; i<n; i++) {
-			point = set[i].makeCopy();
+			pfitDataPoint<T> point = set[i].makeCopy();
 			model.evaluate(set[i], parameters);
 
 			rms = 0;
