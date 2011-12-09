@@ -9,31 +9,40 @@
 
 namespace ofxLevMar {
 
-	FitData::FitData(const pfitDataSetd& set, const Model& model) :
-	set(set), model(model)
-	{
-	}
-
-	void Fit::correlate(const pfitDataSetd& set, const Model& model, vector<double> parameters, int iterations) {
+	template<>
+	void Fit<double>::correlate(const pfitDataSet<double>& set, const Model<double>& model, vector<double> parameters, int iterations) {
 
 		double* outputBlank = new double[set.size()];
 
-		FitData fitData(set, model);
+		FitData<double> fitData(set, model);
 		dlevmar_dif(evaluate, &parameters[0], outputBlank, parameters.size(),
 			set.size(), iterations, NULL, NULL, NULL, NULL, (void*)&set);
 
 		delete[] outputBlank;
 	}
 
-	void evaluate(double *p, double *hx, int m, int n, void *adata) {
-		FitData& data(*(FitData*)adata);
-		const pfitDataSetd& set(data.set);
-		const Model& model(data.model);
-		pfitDataPointd point = *(pfitDataPointd*)0;
+	template<>
+	void Fit<float>::correlate(const pfitDataSet<float>& set, const Model<float>& model, vector<float> parameters, int iterations) {
 
-		vector<double> parameters(&p[0], &p[m]);
+		float* outputBlank = new float[set.size()];
 
-		double rms, error;
+		FitData<float> fitData(set, model);
+		slevmar_dif(evaluate, &parameters[0], outputBlank, parameters.size(),
+			set.size(), iterations, NULL, NULL, NULL, NULL, (void*)&set);
+
+		delete[] outputBlank;
+	}
+
+	template<typename T>
+	void evaluate(T *p, T *hx, int m, int n, void *adata) {
+		FitData<T>& data(*(FitData<T>*)adata);
+		const pfitDataSet<T>& set(data.set);
+		const Model<T>& model(data.model);
+		pfitDataPoint<T> point = *(pfitDataPoint<T>*)0;
+
+		vector<T> parameters(&p[0], &p[m]);
+
+		T rms, error;
 
 		for (int i=0; i<n; i++) {
 			point = set[i].makeCopy();
@@ -49,4 +58,7 @@ namespace ofxLevMar {
 			hx[n] = error;
 		}
 	}
+
+	template class Fit<float>;
+	template class Fit<double>;
 }
