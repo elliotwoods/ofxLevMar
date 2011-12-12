@@ -8,31 +8,45 @@
 #include "ofxLevMar.h"
 
 namespace ofxLevMar {
-
+#pragma mark Model
+	template<typename T>
+	Model<T>::Model(const int dimensionsIn, const int dimensionsOut, const int parameterCount) : parameterCount(parameterCount), dimensionsIn(dimensionsIn), dimensionsOut(dimensionsOut) {
+		
+	}
+	
+#pragma mark Fit
 	template<>
 	void Fit<double>::correlate(const pfitDataSet<double>& set, const Model<double>& model, vector<double> parameters, int iterations) {
-
-		double* outputBlank = new double[set.size()];
+		if (parameters.size() != model.parameterCount)
+			throw ("Fit::correlate : parameters input vector size does not match model's parameter length");
+		
+		vector<double> outputZeros(set.size(), 0);
 
 		FitData<double> fitData(set, model);
-		dlevmar_dif(evaluate, &parameters[0], outputBlank, parameters.size(),
+		dlevmar_dif(evaluate, &parameters[0], &outputZeros[0], parameters.size(),
 			set.size(), iterations, NULL, NULL, NULL, NULL, (void*)&fitData);
-
-		delete[] outputBlank;
 	}
 
 	template<>
 	void Fit<float>::correlate(const pfitDataSet<float>& set, const Model<float>& model, vector<float> parameters, int iterations) {
+		if (parameters.size() != model.parameterCount)
+			throw ("Fit::correlate : parameters input vector size does not match model's parameter length");
 
-		float* outputBlank = new float[set.size()];
+		vector<float> outputZeros(set.size(), 0);
 
 		FitData<float> fitData(set, model);
-		slevmar_dif(evaluate, &parameters[0], outputBlank, parameters.size(),
+		slevmar_dif(evaluate, &parameters[0], &outputZeros[0], parameters.size(),
 			set.size(), iterations, NULL, NULL, NULL, NULL, (void*)&fitData);
-
-		delete[] outputBlank;
 	}
-
+	
+	template<typename T>
+	vector<T> Fit<T>::correlate(const pfitDataSet<T>& set, const Model<T>& model, int iterations) {
+		vector<T> parameters(model.parameterCount, 0);
+		correlate(set, model, parameters, iterations);
+		return parameters;
+	}
+	
+#pragma mark evaluate
 	template<typename T>
 	void evaluate(T *p, T *hx, int m, int n, void *adata) {
 		FitData<T>& data(*(FitData<T>*)adata);
@@ -45,7 +59,7 @@ namespace ofxLevMar {
 
 		for (int i=0; i<n; i++) {
 			pfitDataPoint<T> point = set[i].makeCopy();
-			model.evaluate(set[i], parameters);
+			model.evaluate(point, parameters);
 
 			rms = 0;
 			for (int j=0; j<set.getOutputDimensions(); j++)
@@ -54,10 +68,19 @@ namespace ofxLevMar {
 				rms += error * error;
 			}
 
-			hx[n] = error;
+			hx[n] = sqrt(rms);
+			
+			cout << "[";
+			for (int i=0; i<m; i++)
+				cout << p[i] << ", ";
+			cout << "] ";
+			cout << "rms = " << hx[n] << endl;
 		}
 	}
 
+#pragma mark template
+	template class Model<float>;
+	template class Model<double>;
 	template class Fit<float>;
 	template class Fit<double>;
 }
