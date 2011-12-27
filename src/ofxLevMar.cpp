@@ -16,7 +16,7 @@ namespace ofxLevMar {
 	
 #pragma mark Fit
 	template<>
-	void Fit<double>::correlate(const pfitDataSet<double>& set, const Model<double>& model, vector<double> parameters, int iterations) {
+	void Fit<double>::correlate(const pfitDataSet<double>& set, const Model<double>& model, vector<double>& parameters, int iterations) {
 		if (parameters.size() != model.parameterCount)
 			throw ("Fit::correlate : parameters input vector size does not match model's parameter length");
 		
@@ -28,7 +28,7 @@ namespace ofxLevMar {
 	}
 
 	template<>
-	void Fit<float>::correlate(const pfitDataSet<float>& set, const Model<float>& model, vector<float> parameters, int iterations) {
+	void Fit<float>::correlate(const pfitDataSet<float>& set, const Model<float>& model, vector<float>& parameters, int iterations) {
 		if (parameters.size() != model.parameterCount)
 			throw ("Fit::correlate : parameters input vector size does not match model's parameter length");
 
@@ -48,15 +48,22 @@ namespace ofxLevMar {
 	
 #pragma mark evaluate
 	template<typename T>
-	void evaluate(T *p, T *hx, int m, int n, void *adata) {
+	void evaluate(T *p, T *y, int m, int n, void *adata) {
 		FitData<T>& data(*(FitData<T>*)adata);
 		const pfitDataSet<T>& set(data.set);
 		const Model<T>& model(data.model);
-
-		vector<T> parameters(&p[0], &p[m]);
+		
+		register int i;
+		T x;
+		for(i=0; i<n; ++i){
+			x = set.getInput()[i];
+			y[i]=p[0]*exp(-p[1]*x) + p[2] - set.getOutput()[i];
+		}
+		return;
 
 		T rms, error;
-
+		vector<T> parameters(&p[0], &p[m]);
+		
 		for (int i=0; i<n; i++) {
 			pfitDataPoint<T> point = set[i].makeCopy();
 			model.evaluate(point, parameters);
@@ -68,13 +75,13 @@ namespace ofxLevMar {
 				rms += error * error;
 			}
 
-			hx[n] = sqrt(rms);
+			y[n] = sqrt(rms);
 			
 			cout << "[";
 			for (int i=0; i<m; i++)
 				cout << p[i] << ", ";
 			cout << "] ";
-			cout << "rms = " << hx[n] << endl;
+			cout << "rms = " << y[n] << endl;
 		}
 	}
 

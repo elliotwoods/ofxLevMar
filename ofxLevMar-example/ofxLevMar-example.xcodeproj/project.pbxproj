@@ -109,7 +109,7 @@
 		8B535D5B149504480035F325 /* ofxPolyFit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxPolyFit.cpp; sourceTree = "<group>"; };
 		8B535D5C149504480035F325 /* ofxPolyFit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPolyFit.h; sourceTree = "<group>"; };
 		8B535D8214950E580035F325 /* ofxPolyFitUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxPolyFitUtils.cpp; sourceTree = "<group>"; };
-		8B535D8414950E690035F325 /* ofxPolyFitUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; path = ofxPolyFitUtils.h; sourceTree = "<group>"; };
+		8B535D8414950E690035F325 /* ofxPolyFitUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPolyFitUtils.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };

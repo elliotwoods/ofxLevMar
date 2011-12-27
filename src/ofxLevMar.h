@@ -39,11 +39,11 @@ namespace ofxLevMar {
 	template<typename T>
 	class Fit {
 	public:
-		void correlate(const pfitDataSetd& set, const Model<double>& model, vector<double> parameters, int iterations=100);
-		void correlate(const pfitDataSetf& set, const Model<float>& model, vector<float> parameters, int iterations=100);
+		void correlate(const pfitDataSetd& set, const Model<double>& model, vector<double>& parameters, int iterations=1000);
+		void correlate(const pfitDataSetf& set, const Model<float>& model, vector<float>& parameters, int iterations=1000);
 		
 		///Correlate and return parameters (initialised as 0's) 
-		vector<T> correlate(const pfitDataSet<T> &set, const Model<T>& model, int iterations=100);
+		vector<T> correlate(const pfitDataSet<T> &set, const Model<T>& model, int iterations=1000);
 	};
 
 	template<typename T>

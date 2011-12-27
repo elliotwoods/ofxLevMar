@@ -6,40 +6,30 @@
  
  y = m*x + c
  
- This linear fit has:
-		2 parameters m, c
+ This exponential model has:
+		3 parameters A, B, C
 		1 input x
 		1 output y
  **/
 
-class TrivialModel : public Model<float> {
+class TrivialModel : public Model<double> {
 public:
-	TrivialModel() :	Model<float>(1, 1, 2) { }
-	void evaluate(pfitDataPoint<float>& point, const vector<float> &parameters) const {
-		
-		float& x (*point.getInput());
-		float& y (*point.getOutput());
-		
-		const float& m (parameters[0]);
-		const float& c (parameters[1]);
-		
-		y = m * x + c;
-	}
-};
+	TrivialModel() : Model<double>(1, 1, 3) { }
 
-class TraRotModel : public Model<float> {
-public:
-	TraRotModel() :	Model<float>(3, 3, 3) { }
-	void evaluate(pfitDataPoint<float>& point, const vector<float> &parameters) const {
+	void evaluate(pfitDataPoint<double>& point, const vector<double> &parameters) const {
 		
-		ofVec3f &in(*(ofVec3f*)point.getInput());
-		ofVec3f &out(*(ofVec3f*)point.getOutput());
+		double& x (*point.getInput());
+		double& y (*point.getOutput());
 		
-		ofVec3f &tra(*(ofVec3f*)&parameters[0]);
-		//ofVec3f &rot(*(ofVec3f*)&parameters[1]);
+		const double& A (parameters[0]);
+		const double& B (parameters[1]);
+		const double& C (parameters[1]);
 		
-		//rotate then translate
-		out = in + tra;
+		y = A * exp(B * x) + C;
+	}
+	
+	double evaluate(double x, double A, double B, double C) {
+		return A * exp(B * x) + C;
 	}
 };
 
@@ -47,7 +37,6 @@ public:
 void testApp::setup(){
 	testTrivial();
 	std::exit(0);
-	testTransform();
 }
 //--------------------------------------------------------------
 void testApp::update(){
@@ -70,55 +59,29 @@ void testApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void testApp::testTrivial() {
-	Fit<float> fit;
-	pfitDataSetf set;
+	Fit<double> fit;
+	TrivialModel model;
+	
+	pfitDataSetd set;
 	set.init(1, 1, 10);
 	
+	float range = 10.0;
+	
 	float x;
-	for (int i=0; i<10; i++) {
-		x = float(i) / 10.0f;
+	float xStep = range / double(set.size());
+	for (int i=0; i<set.size(); i++) {
+		x = double(i) * xStep;
 		set.getInput()[i] = x;
-		set.getOutput()[i] = 3.0f*x + -5.0f;
+		set.getOutput()[i] = model.evaluate(x, 5, -0.1, 1);
 	}
 	
-	vector<float> parameters = fit.correlate(set, TrivialModel());
+	vector<double> parameters = fit.correlate(set, model);
 	
-	cout << "Results: m=" << parameters[0] << " c=" << parameters[1] << endl;
+	cout << "Results: ";
+	for (int i=0; i<3; i++) {
+		if (i!=0)
+			cout << ", ";
+		cout << parameters[i];
+	}
 	cout << endl;
-}
-
-//--------------------------------------------------------------
-void testApp::testTransform() {
-	
-	input.resize(COUNT);
-	transformed.resize(COUNT);
-	
-	for (int i=0; i<COUNT; i++)
-		input[i] = ofVec3f(ofRandom(-5, 5),
-						   ofRandom(-5, 5),
-						   ofRandom(-5, 5));
-	
-	translation = ofVec3f(ofRandom(-10, 10),
-						  ofRandom(-10, 10),
-						  ofRandom(-10, 10));
-	
-	//	rotation.makeRotate(ofRandom(360), 0.2, 0.1, 0.3);
-	
-	transformed.resize(COUNT);
-	ofVec3f t;
-	for (int i=0; i<COUNT; i++) {
-		//		t = input[i] * rotation + translation;
-		t = input[i] + translation;
-		transformed[i] = t;
-	}
-	
-	pfitDataSetf dataSet = ofxPolyfit::makeDataSet(input, transformed);
-	parameters = vector<float>(3, 0);
-	
-	fit.correlate(dataSet, TraRotModel(), parameters, 100);
-	
-	translationFitted = *(ofVec3f*)&parameters[0];
-	
-	cout << translation << endl;
-	cout << translationFitted << endl;
 }
