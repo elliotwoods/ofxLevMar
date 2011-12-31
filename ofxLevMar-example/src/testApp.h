@@ -34,5 +34,6 @@ public:
 	
 protected:
 	void testTrivial();
+	void testTraRot();
 	void testTransform();
 };

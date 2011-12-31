@@ -19,7 +19,7 @@ namespace ofxLevMar {
 	class Model {
 	public:
 		Model(const int dimensionsIn, const int dimensionsOut, const int parameterCount);
-		virtual void evaluate(pfitDataPoint<T>& p, const vector<T> &parameters) const = 0;
+		virtual void evaluate(pfitDataPoint<T>& p, const T* parameters) const = 0;
 		
 		const int parameterCount, dimensionsIn, dimensionsOut;
 	};

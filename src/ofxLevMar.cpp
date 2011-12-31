@@ -52,21 +52,12 @@ namespace ofxLevMar {
 		FitData<T>& data(*(FitData<T>*)adata);
 		const pfitDataSet<T>& set(data.set);
 		const Model<T>& model(data.model);
-		
-		register int i;
-		T x;
-		for(i=0; i<n; ++i){
-			x = set.getInput()[i];
-			y[i]=p[0]*exp(-p[1]*x) + p[2] - set.getOutput()[i];
-		}
-		return;
 
 		T rms, error;
-		vector<T> parameters(&p[0], &p[m]);
 		
 		for (int i=0; i<n; i++) {
 			pfitDataPoint<T> point = set[i].makeCopy();
-			model.evaluate(point, parameters);
+			model.evaluate(point, p);
 
 			rms = 0;
 			for (int j=0; j<set.getOutputDimensions(); j++)
@@ -75,13 +66,7 @@ namespace ofxLevMar {
 				rms += error * error;
 			}
 
-			y[n] = sqrt(rms);
-			
-			cout << "[";
-			for (int i=0; i<m; i++)
-				cout << p[i] << ", ";
-			cout << "] ";
-			cout << "rms = " << y[n] << endl;
+			y[i] = sqrt(rms);
 		}
 	}
 

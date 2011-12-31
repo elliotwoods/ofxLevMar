@@ -7,13 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8B535C9C149502E00035F325 /* Axb.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B535C69149502E00035F325 /* Axb.c */; };
-		8B535C9E149502E00035F325 /* lm.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B535C6D149502E00035F325 /* lm.c */; };
-		8B535CA0149502E00035F325 /* lmbc.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B535C6F149502E00035F325 /* lmbc.c */; };
-		8B535CA2149502E00035F325 /* lmblec.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B535C71149502E00035F325 /* lmblec.c */; };
-		8B535CA3149502E00035F325 /* lmbleic.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B535C72149502E00035F325 /* lmbleic.c */; };
-		8B535CA4149502E00035F325 /* lmlec.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B535C73149502E00035F325 /* lmlec.c */; };
-		8B535CA5149502E00035F325 /* misc.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B535C74149502E00035F325 /* misc.c */; };
+		8B12A74014AB92690019A5FA /* liblevmar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B12A73C14AB92690019A5FA /* liblevmar.a */; };
 		8B535CAE149502E00035F325 /* ofxLevMar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B535C9A149502E00035F325 /* ofxLevMar.cpp */; };
 		8B535D031495033B0035F325 /* ofxGrabCam.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B535CF01495033A0035F325 /* ofxGrabCam.cpp */; };
 		8B535D67149504490035F325 /* basisTransformIndices.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B535D12149504480035F325 /* basisTransformIndices.cpp */; };
@@ -25,6 +19,7 @@
 		8B535D6D149504490035F325 /* powerBases.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B535D1F149504480035F325 /* powerBases.cpp */; };
 		8B535D7A149504490035F325 /* ofxPolyFit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B535D5B149504480035F325 /* ofxPolyFit.cpp */; };
 		8B535D8314950E580035F325 /* ofxPolyFitUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B535D8214950E580035F325 /* ofxPolyFitUtils.cpp */; };
+		8BE663B714AE83440028F7B7 /* pfitDataPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BE663B614AE83440028F7B7 /* pfitDataPoint.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -75,16 +70,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8B535C69149502E00035F325 /* Axb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Axb.c; sourceTree = "<group>"; };
-		8B535C6B149502E00035F325 /* compiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = compiler.h; sourceTree = "<group>"; };
-		8B535C6C149502E00035F325 /* levmar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = levmar.h; sourceTree = "<group>"; };
-		8B535C6D149502E00035F325 /* lm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lm.c; sourceTree = "<group>"; };
-		8B535C6F149502E00035F325 /* lmbc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lmbc.c; sourceTree = "<group>"; };
-		8B535C71149502E00035F325 /* lmblec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lmblec.c; sourceTree = "<group>"; };
-		8B535C72149502E00035F325 /* lmbleic.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lmbleic.c; sourceTree = "<group>"; };
-		8B535C73149502E00035F325 /* lmlec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lmlec.c; sourceTree = "<group>"; };
-		8B535C74149502E00035F325 /* misc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = misc.c; sourceTree = "<group>"; };
-		8B535C75149502E00035F325 /* misc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = misc.h; sourceTree = "<group>"; };
+		8B12A73114AB8C140019A5FA /* levmar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = levmar.h; sourceTree = "<group>"; };
+		8B12A73C14AB92690019A5FA /* liblevmar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = liblevmar.a; sourceTree = "<group>"; };
+		8B2DF9AA14AB5A2100F6445C /* TraRotModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TraRotModel.h; path = Models/TraRotModel.h; sourceTree = "<group>"; };
+		8B2DF9AB14AB5A7E00F6445C /* TrivialModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrivialModel.h; path = Models/TrivialModel.h; sourceTree = "<group>"; };
 		8B535C98149502E00035F325 /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.md; sourceTree = "<group>"; };
 		8B535C9A149502E00035F325 /* ofxLevMar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxLevMar.cpp; sourceTree = "<group>"; };
 		8B535C9B149502E00035F325 /* ofxLevMar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxLevMar.h; sourceTree = "<group>"; };
@@ -110,6 +99,8 @@
 		8B535D5C149504480035F325 /* ofxPolyFit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPolyFit.h; sourceTree = "<group>"; };
 		8B535D8214950E580035F325 /* ofxPolyFitUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxPolyFitUtils.cpp; sourceTree = "<group>"; };
 		8B535D8414950E690035F325 /* ofxPolyFitUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPolyFitUtils.h; sourceTree = "<group>"; };
+		8BE663B514AE83270028F7B7 /* pfitDataPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pfitDataPoint.h; sourceTree = "<group>"; };
+		8BE663B614AE83440028F7B7 /* pfitDataPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pfitDataPoint.cpp; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -152,12 +143,47 @@
 				E4C2424710CC5A17004149E2 /* AppKit.framework in Frameworks */,
 				E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */,
 				E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */,
+				8B12A74014AB92690019A5FA /* liblevmar.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B12A72F14AB8C140019A5FA /* levmar */ = {
+			isa = PBXGroup;
+			children = (
+				8B12A73014AB8C140019A5FA /* include */,
+				8B12A73214AB8C140019A5FA /* lib */,
+			);
+			path = levmar;
+			sourceTree = "<group>";
+		};
+		8B12A73014AB8C140019A5FA /* include */ = {
+			isa = PBXGroup;
+			children = (
+				8B12A73114AB8C140019A5FA /* levmar.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		8B12A73214AB8C140019A5FA /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				8B12A73C14AB92690019A5FA /* liblevmar.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		8B2DF9A914AB5A0100F6445C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8B2DF9AA14AB5A2100F6445C /* TraRotModel.h */,
+				8B2DF9AB14AB5A7E00F6445C /* TrivialModel.h */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		8B535C63149502E00035F325 /* ofxLevMar */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,34 +198,9 @@
 		8B535C66149502E00035F325 /* libs */ = {
 			isa = PBXGroup;
 			children = (
-				8B535C67149502E00035F325 /* levmar */,
+				8B12A72F14AB8C140019A5FA /* levmar */,
 			);
 			path = libs;
-			sourceTree = "<group>";
-		};
-		8B535C67149502E00035F325 /* levmar */ = {
-			isa = PBXGroup;
-			children = (
-				8B535C68149502E00035F325 /* src */,
-			);
-			path = levmar;
-			sourceTree = "<group>";
-		};
-		8B535C68149502E00035F325 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				8B535C69149502E00035F325 /* Axb.c */,
-				8B535C6B149502E00035F325 /* compiler.h */,
-				8B535C6C149502E00035F325 /* levmar.h */,
-				8B535C6D149502E00035F325 /* lm.c */,
-				8B535C6F149502E00035F325 /* lmbc.c */,
-				8B535C71149502E00035F325 /* lmblec.c */,
-				8B535C72149502E00035F325 /* lmbleic.c */,
-				8B535C73149502E00035F325 /* lmlec.c */,
-				8B535C74149502E00035F325 /* misc.c */,
-				8B535C75149502E00035F325 /* misc.h */,
-			);
-			path = src;
 			sourceTree = "<group>";
 		};
 		8B535C99149502E00035F325 /* src */ = {
@@ -282,6 +283,8 @@
 				8B535D16149504480035F325 /* pfitBasis.h */,
 				8B535D17149504480035F325 /* pfitDataSet.cpp */,
 				8B535D18149504480035F325 /* pfitDataSet.h */,
+				8BE663B514AE83270028F7B7 /* pfitDataPoint.h */,
+				8BE663B614AE83440028F7B7 /* pfitDataPoint.cpp */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				8B2DF9A914AB5A0100F6445C /* Models */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
@@ -469,13 +473,6 @@
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
-				8B535C9C149502E00035F325 /* Axb.c in Sources */,
-				8B535C9E149502E00035F325 /* lm.c in Sources */,
-				8B535CA0149502E00035F325 /* lmbc.c in Sources */,
-				8B535CA2149502E00035F325 /* lmblec.c in Sources */,
-				8B535CA3149502E00035F325 /* lmbleic.c in Sources */,
-				8B535CA4149502E00035F325 /* lmlec.c in Sources */,
-				8B535CA5149502E00035F325 /* misc.c in Sources */,
 				8B535CAE149502E00035F325 /* ofxLevMar.cpp in Sources */,
 				8B535D031495033B0035F325 /* ofxGrabCam.cpp in Sources */,
 				8B535D67149504490035F325 /* basisTransformIndices.cpp in Sources */,
@@ -487,6 +484,7 @@
 				8B535D6D149504490035F325 /* powerBases.cpp in Sources */,
 				8B535D7A149504490035F325 /* ofxPolyFit.cpp in Sources */,
 				8B535D8314950E580035F325 /* ofxPolyFitUtils.cpp in Sources */,
+				8BE663B714AE83440028F7B7 /* pfitDataPoint.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,6 +572,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				HEADER_CAIRO = "\"$(OF_PATH)/libs/cairo/include/cairo\"";
 				HEADER_FMODEX = "\"$(OF_PATH)/libs/fmodex/include\"";
 				HEADER_FREEIMAGE = "\"$(OF_PATH)/libs/FreeImage/include\"";
@@ -658,8 +657,12 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/android/armeabi\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10 = "\"$(SRCROOT)/../libs/levmar/lib\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/android/armeabi-v7a\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/iphone\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/linux\"";
@@ -706,6 +709,7 @@
 				GCC_MODEL_TUNING = G4;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				HEADER_CAIRO = "\"$(OF_PATH)/libs/cairo/include/cairo\"";
 				HEADER_FMODEX = "\"$(OF_PATH)/libs/fmodex/include\"";
 				HEADER_FREEIMAGE = "\"$(OF_PATH)/libs/FreeImage/include\"";
@@ -790,8 +794,12 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/android/armeabi\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10 = "\"$(SRCROOT)/../libs/levmar/lib\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/android/armeabi-v7a\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/iphone\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/linux\"";
